@@ -7,6 +7,7 @@ from matplotlib.patches import Patch
 import tempfile, os
 from pathlib import Path
 import pandas as pd
+import gdown  # <── Librería añadida para la descarga directa en vivo
 
 st.set_page_config(
     page_title="FragmentApp — Análisis de Roca",
@@ -14,6 +15,17 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# ─── TRUCO DE DESCARGA EN VIVO DESDE GOOGLE DRIVE ─────────────────────────────
+# Si el modelo no existe físicamente en el servidor de Streamlit Cloud, lo descarga en un instante
+if not Path("best.pt").exists():
+    with st.spinner("Descargando el modelo YOLO entrenado desde Google Drive (Esto solo toma unos segundos)..."):
+        id_drive = "1vVdvUfLMejx0JWocpTc957i0jEFmwh4j"  # <── Tu ID extraído de la URL
+        url_descarga = f"https://drive.google.com/uc?id={id_drive}"
+        try:
+            gdown.download(url_descarga, "best.pt", quiet=False)
+        except Exception as e:
+            st.error(f"Error crítico al intentar descargar el modelo desde Google Drive: {e}")
 
 # ─── CSS ──────────────────────────────────────────────────────────────────────
 st.markdown("""
@@ -204,7 +216,7 @@ def fig_segmentacion(imagen_bgr, fragmentos, intervalos):
         rgb = color_intervalo(frag["diam_equiv"], intervalos)
         bgr = (rgb[2], rgb[1], rgb[0])
         cv2.drawContours(overlay, [frag["contorno"]], -1, bgr, -1)
-        cv2.drawContours(vis,     [frag["contorno"]], -1, bgr,  2)
+        cv2.drawContours(vis,      [frag["contorno"]], -1, bgr,  2)
     vis = cv2.addWeighted(overlay, 0.45, vis, 0.55, 0)
     vis_rgb = cv2.cvtColor(vis, cv2.COLOR_BGR2RGB)
 
