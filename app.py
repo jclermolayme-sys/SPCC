@@ -352,7 +352,7 @@ with tab_upload:
         datos = np.frombuffer(archivo.read(), np.uint8)
         imagen_bgr = cv2.imdecode(datos, cv2.IMREAD_COLOR)
         st.image(cv2.cvtColor(imagen_bgr, cv2.COLOR_BGR2RGB),
-                 caption="Imagen cargada", use_container_width=True)
+                 caption="Imagen cargada", use_container_width="stretch")
 
 with tab_camara:
     foto = st.camera_input("Toma una foto de la voladura")
@@ -418,15 +418,15 @@ if "resultados" in st.session_state:
 
     with col_img:
         st.markdown("<div class='section-title'>Segmentación por Intervalo</div>", unsafe_allow_html=True)
-        st.pyplot(fig_segmentacion(img_orig, fragmentos, intervalos), use_container_width=True)
+        st.pyplot(fig_segmentacion(img_orig, fragmentos, intervalos), use_container_width="stretch")
 
     with col_curva:
         st.markdown("<div class='section-title'>Curva Granulométrica</div>", unsafe_allow_html=True)
-        st.pyplot(fig_curva(curva, intervalos, unidad), use_container_width=True)
+        st.pyplot(fig_curva(curva, intervalos, unidad), use_container_width="stretch")
 
     # ── Histograma ────────────────────────────────────────────────────────────
     st.markdown("<div class='section-title'>Histograma</div>", unsafe_allow_html=True)
-    st.pyplot(fig_histograma(fragmentos, intervalos, unidad), use_container_width=True)
+    st.pyplot(fig_histograma(fragmentos, intervalos, unidad), use_container_width="stretch")
 
     # ── Tabla percentiles ─────────────────────────────────────────────────────
     st.markdown("<div class='section-title'>Percentiles Completos</div>", unsafe_allow_html=True)
@@ -434,7 +434,7 @@ if "resultados" in st.session_state:
         {"Percentil": k, f"Valor ({unidad})": f"{v:.4f}"}
         for k, v in curva.items() if k.startswith("D")
     ])
-    st.dataframe(percdf, use_container_width=True, hide_index=True)
+    st.dataframe(percdf, use_container_width="stretch", hide_index=True)
 
     # ── Estadísticas avanzadas ────────────────────────────────────────────────
     st.markdown("<div class='section-title'>Estadísticas Avanzadas</div>", unsafe_allow_html=True)
