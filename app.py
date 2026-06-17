@@ -81,7 +81,7 @@ if not verificar_login():
 #  DESCARGA DEL MODELO
 # ──────────────────────────────────────────────────────────────────────────
 MODELO_PATH = "best.pt"
-DRIVE_FILE_ID = "1vVdvUfLMejx0JWocpTc957i0jEFmwh4j"
+DRIVE_FILE_ID = "https://drive.usercontent.google.com/download?id=1vVdvUfLMejx0JWocpTc957i0jEFmwh4j&authuser=0"
 
 def asegurar_modelo():
     if Path(MODELO_PATH).exists() and Path(MODELO_PATH).stat().st_size > 0:
