@@ -81,14 +81,14 @@ if not verificar_login():
 #  DESCARGA DEL MODELO
 # ──────────────────────────────────────────────────────────────────────────
 MODELO_PATH = "best.pt"
-DRIVE_FILE_ID = "https://drive.usercontent.google.com/download?id=1vVdvUfLMejx0JWocpTc957i0jEFmwh4j&authuser=0"
+DRIVE_FILE_ID = "1vVdvUfLMejx0JWocpTc957i0jEFmwh4j"
 
 def asegurar_modelo():
     if Path(MODELO_PATH).exists() and Path(MODELO_PATH).stat().st_size > 0:
         return True
     with st.spinner("Descargando modelo entrenado (solo la primera vez)..."):
         try:
-            gdown.download(id=DRIVE_FILE_ID, output=MODELO_PATH, quiet=False, fuzzy=True)
+            gdown.download(id=DRIVE_FILE_ID, output=MODELO_PATH, quiet=False)
         except Exception as e:
             st.error(f"Error al descargar el modelo: {e}")
             return False
