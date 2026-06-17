@@ -552,7 +552,7 @@ with tab_upload:
     if archivo:
         datos = np.frombuffer(archivo.read(), np.uint8)
         imagen_bgr = cv2.imdecode(datos, cv2.IMREAD_COLOR)
-        st.image(cv2.cvtColor(imagen_bgr, cv2.COLOR_BGR2RGB), caption="Imagen cargada", use_column_width=True)
+        st.image(cv2.cvtColor(imagen_bgr, cv2.COLOR_BGR2RGB), caption="Imagen cargada", use_container_width=True)
 
 with tab_camara:
     foto = st.camera_input("Toma una foto de la voladura")
