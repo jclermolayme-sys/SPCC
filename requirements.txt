@@ -1,8 +1,8 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 
 streamlit==1.58.0
+numpy==1.26.4
 opencv-python-headless==4.8.1.78
-numpy
 matplotlib
 pandas
 gdown
