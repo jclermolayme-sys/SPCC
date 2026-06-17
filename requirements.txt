@@ -1,9 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 streamlit==1.58.0
-opencv-python-headless==4.13.0.92
+opencv-python-headless
 numpy
 matplotlib
 pandas
 gdown
-torch==2.12.0+cpu--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.12.0+cpu
 torchvision==0.27.0+cpu
 ultralytics==8.4.70
