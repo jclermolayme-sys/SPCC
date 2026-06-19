@@ -82,7 +82,7 @@ if not verificar_login():
 #  DESCARGA DEL MODELO
 # ──────────────────────────────────────────────────────────────────────────
 MODELO_PATH = "best.pt"
-DRIVE_FILE_ID = "1vVdvUfLMejx0JWocpTc957i0jEFmwh4j"
+DRIVE_FILE_ID = "221vVdvUfLMejx0JWocpTc957i0jEFmwh4j"
 
 def asegurar_modelo():
     if Path(MODELO_PATH).exists() and Path(MODELO_PATH).stat().st_size > 0:
